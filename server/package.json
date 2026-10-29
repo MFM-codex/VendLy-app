@@ -1,0 +1,11 @@
+{
+  "name": "vendly-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --no-warnings index.js",
+    "test": "node --test --no-warnings"
+  }
+}

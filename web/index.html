@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vendly – Airtime, Data, Power &amp; TV</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22lg-bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230B7A55%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23032F23%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22lg-a%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23A7F3D0%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22lg-b%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F59E0B%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FEF08A%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22lg-h%22%20cx%3D%22.22%22%20cy%3D%22.12%22%20r%3D%22.85%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.16%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22url%28%23lg-bg%29%22/%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22url%28%23lg-h%29%22/%3E%3Cpath%20d%3D%22M16%2021%2031%2047%22%20stroke%3D%22url%28%23lg-a%29%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M31%2047%2046%2020%22%20stroke%3D%22%23021F17%22%20stroke-opacity%3D%22.30%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M31%2047%2046%2020%22%20stroke%3D%22url%28%23lg-b%29%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M57%2019A11%2011%200%200%200%2048.9%209.4%22%20stroke%3D%22%23FDE68A%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M61.9%2018.6A16%2016%200%200%200%2050.1%204.5%22%20stroke%3D%22%23FDE68A%22%20stroke-opacity%3D%22.55%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22/%3E%3C/svg%3E">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0B6B4C">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Vendly">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@layer reset,base,ui;
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+@layer reset{
+*,::before,::after{box-sizing:border-box}
+body,h1,h2,h3,p,fieldset{margin:0}
+fieldset{border:0;padding:0;min-inline-size:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+}
+@layer base{
+:root{color-scheme:light dark;
+--bg:light-dark(oklch(97.6% .008 165),oklch(18.5% .02 170));
+--surf:light-dark(#fff,oklch(23.5% .025 170));
+--ink:light-dark(oklch(24% .035 170),oklch(95% .01 165));
+--mute:light-dark(oklch(50% .025 170),oklch(74% .02 170));
+--line:color-mix(in oklab,var(--ink) 11%,transparent);
+--pri:light-dark(oklch(50% .12 160),oklch(76% .15 160));
+--on:light-dark(#fff,oklch(20% .04 165));
+--acc:oklch(84% .16 88);
+--err:light-dark(oklch(52% .19 27),oklch(76% .14 27));
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 "Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;accent-color:var(--pri)}
+h1,h2,h3,.num{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;text-wrap:balance}
+.mute,small{color:var(--mute)}
+.i{inline-size:1.3em;block-size:1.3em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid color-mix(in oklab,var(--pri) 70%,transparent);outline-offset:2px}
+}
+@layer ui{
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-block-size:100dvh}
+.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;block-size:100dvh;padding:24px 16px;display:flex;flex-direction:column;gap:28px;border-inline-end:1px solid var(--line);background:var(--surf)}
+.brand{display:flex;align-items:center;gap:10px;font:800 22px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em}
+.mark{display:grid;place-items:center;inline-size:34px;block-size:34px;border-radius:11px;background:var(--pri);color:var(--on);font-size:20px}
+#nav{display:grid;gap:4px}
+#nav button,#bnav button{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;font-weight:500;color:var(--mute);transition:background .2s,color .2s}
+#nav button:hover{background:color-mix(in oklab,var(--pri) 8%,transparent);color:var(--ink)}
+#nav button[aria-current=page]{background:color-mix(in oklab,var(--pri) 14%,transparent);color:var(--pri);font-weight:600}
+.fine{margin-block-start:auto;font-size:12px;color:var(--mute)}
+main{container:m/inline-size;padding:clamp(16px,3vw,36px);max-inline-size:1100px;inline-size:100%;margin-inline:auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-block-end:22px}
+.top h1{font-size:clamp(24px,4cqi,34px);line-height:1.1}
+.icon-btn{display:grid;place-items:center;inline-size:42px;block-size:42px;border-radius:50%;border:1px solid var(--line);background:var(--surf)}
+.grid{display:grid;gap:18px;grid-template-areas:"wallet" "work" "stats"}
+@container m (min-width:760px){.grid{grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);grid-template-areas:"work wallet" "work stats";grid-template-rows:auto 1fr;align-items:start}}
+.wcard{grid-area:wallet}#work{grid-area:work}#stats{grid-area:stats}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:clamp(16px,3cqi,26px);box-shadow:0 1px 0 var(--line),0 24px 40px -28px color-mix(in oklab,var(--pri) 45%,transparent)}
+.ph{display:flex;gap:14px;align-items:center;margin-block-end:20px}
+.ph h2{font-size:22px}.ph p{color:var(--mute);font-size:14px}
+.ic{display:grid;place-items:center;inline-size:44px;block-size:44px;border-radius:14px;background:color-mix(in oklab,var(--pri) 13%,transparent);color:var(--pri);flex:none}
+fieldset{margin-block-end:18px}
+legend,.fld label{font-size:13px;font-weight:600;color:var(--mute);margin-block-end:8px;padding:0;display:block}
+.nets{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);font-weight:500;transition:border-color .15s,background .15s,transform .15s}
+.opt input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+.opt:hover{border-color:color-mix(in oklab,var(--pri) 45%,var(--line))}
+.opt:has(:checked){border-color:var(--pri);background:color-mix(in oklab,var(--pri) 10%,var(--surf));box-shadow:0 0 0 3px color-mix(in oklab,var(--pri) 16%,transparent)}
+.opt:has(:focus-visible){outline:3px solid color-mix(in oklab,var(--pri) 70%,transparent);outline-offset:2px}
+.opt.pill{border-radius:999px;padding:8px 16px}
+.logo{display:grid;place-items:center;inline-size:26px;block-size:26px;border-radius:8px;background:var(--bg);color:var(--fg);font:800 13px "Bricolage Grotesque",sans-serif;flex:none}
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}
+.plan{flex-direction:column;align-items:flex-start;gap:2px}
+.plan b{font:700 18px "Bricolage Grotesque",sans-serif}
+.plan small{font-size:12px}.plan em{font-style:normal;font-weight:600;color:var(--pri);margin-block-start:4px}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.fld{margin-block-end:18px}
+.fld input,.fld select{inline-size:100%;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);font-size:16px;transition:border-color .15s,box-shadow .15s}
+.fld input:focus,.fld select:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 4px color-mix(in oklab,var(--pri) 18%,transparent)}
+.fld input:user-invalid{border-color:var(--err)}
+.sm{margin-block-start:8px}
+.pill{font-size:13px}
+button.pill:not(.opt){padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:14px;font-weight:600;transition:transform .15s,filter .15s}
+.btn:active{transform:scale(.98)}
+.btn.pri{inline-size:100%;background:var(--pri);color:var(--on);font-size:16px}
+.btn.pri:hover{filter:brightness(1.07)}
+.btn.acc{background:var(--acc);color:oklch(25% .05 85)}
+.btn.ghost{inline-size:100%;border:1px solid var(--line);margin-block-start:8px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.err{color:var(--err);font-size:14px;min-block-size:1.5em;margin-block-end:8px}
+.wcard{position:relative;isolation:isolate;border-radius:26px;padding:22px;color:#fff;background:radial-gradient(120% 90% at 100% 0%,oklch(52% .13 160/.55),transparent 60%),radial-gradient(80% 70% at 0% 100%,oklch(62% .15 95/.28),transparent 60%),linear-gradient(150deg,oklch(35% .08 165),oklch(22% .05 175));display:grid;gap:6px}
+.wcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--a),transparent 55%,var(--acc),transparent 95%);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;-webkit-mask-composite:xor;animation:spin 7s linear infinite;pointer-events:none}
+@keyframes spin{to{--a:360deg}}
+.r1{display:flex;justify-content:space-between;font-size:13px;opacity:.85}
+.lab{margin-block-start:18px;font-size:13px;opacity:.75}
+.big{font-size:clamp(34px,8cqi,46px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.acts{display:flex;gap:10px;align-items:center;margin-block-start:14px}
+.acts .icon-btn{background:#fff2;border-color:#fff3;color:#fff}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-block-end:14px}
+.sh h3{font-size:17px}
+.bars{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;block-size:110px;align-items:end}
+.bar{display:grid;gap:6px;justify-items:center;block-size:100%;grid-template-rows:1fr auto;font-size:11px;color:var(--mute)}.bar i{align-self:end}
+.bar i{display:block;inline-size:100%;block-size:var(--h);min-block-size:4px;border-radius:8px 8px 4px 4px;background:color-mix(in oklab,var(--pri) 35%,transparent);transition:block-size .6s cubic-bezier(.2,.8,.2,1)}
+@starting-style{.bar i{block-size:4px}}
+.bar.now i{background:var(--pri)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-block-end:16px}
+.kpi{padding:12px;border-radius:14px;background:var(--bg)}
+.kpi b{display:block;font:700 20px "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
+.tx{display:flex;align-items:center;gap:12px;inline-size:100%;text-align:start;padding:12px 8px;margin-inline:-8px;border-radius:14px;transition:background .15s}
+.tx:hover{background:var(--bg)}
+.tx .t{flex:1;min-inline-size:0}.tx b{display:block;font-weight:600}.tx small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.amt{font-weight:600;font-variant-numeric:tabular-nums}
+.empty{color:var(--mute);padding:20px 0;text-align:center}
+.bottom{display:none}
+dialog{border:0;padding:0;background:var(--surf);color:var(--ink);inline-size:min(100%,440px);max-inline-size:100%;margin:auto auto 0;border-radius:26px 26px 0 0;box-shadow:0 -20px 60px -20px #0008;opacity:0;translate:0 40px;transition:opacity .25s,translate .3s cubic-bezier(.2,.8,.2,1),overlay .25s allow-discrete,display .25s allow-discrete}
+dialog[open]{opacity:1;translate:0 0}
+@starting-style{dialog[open]{opacity:0;translate:0 40px}}
+dialog::backdrop{background:oklch(15% .03 170/.5);backdrop-filter:blur(6px)}
+.sheet{padding:24px 22px calc(22px + env(safe-area-inset-bottom,0px));max-block-size:88dvh;overflow:auto}
+.sheet h3{font-size:22px;margin-block-end:12px}
+.row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-block-end:1px dashed var(--line);font-size:14px}
+.row span:first-child{color:var(--mute)}.row span:last-child{font-weight:600;text-align:end;word-break:break-word}
+.pin{display:flex;gap:10px;justify-content:center;margin-block:18px 10px}
+.pin input{inline-size:58px;block-size:66px;text-align:center;font-size:26px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg)}
+.pin input:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 4px color-mix(in oklab,var(--pri) 18%,transparent)}
+.center{text-align:center}
+.spin{inline-size:46px;aspect-ratio:1;border-radius:50%;border:4px solid var(--line);border-top-color:var(--pri);animation:rot .8s linear infinite;margin:26px auto}
+@keyframes rot{to{rotate:1turn}}
+.tick{inline-size:68px;display:block;margin:0 auto 12px;fill:none;stroke:var(--pri);stroke-width:3;stroke-linecap:round}
+.tick circle{stroke-dasharray:151;stroke-dashoffset:151;animation:draw .6s forwards}
+.tick path{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .4s .45s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.token{font:800 22px "Bricolage Grotesque",sans-serif;letter-spacing:.05em;text-align:center;background:var(--bg);border-radius:14px;padding:14px;margin-block:14px;word-break:break-all;font-variant-numeric:tabular-nums}
+@media (max-width:860px){
+.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}
+main{padding-block-end:96px}
+.bottom{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;inset-inline:0;bottom:0;z-index:5;background:color-mix(in oklab,var(--surf) 84%,transparent);backdrop-filter:blur(16px) saturate(1.5);border-block-start:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+#bnav button{flex-direction:column;gap:2px;font-size:11px;padding:8px 2px}
+#bnav button[aria-current=page]{color:var(--pri);font-weight:600}
+}
+@media (min-width:600px){dialog{margin:auto;border-radius:26px}}
+@media (prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}.tick circle,.tick path{stroke-dashoffset:0}}
+}
+[hidden]{display:none!important}
+.banner{margin:0 0 16px;padding:10px 14px;border-radius:14px;font-size:13px;background:color-mix(in oklab,var(--acc) 22%,var(--surf));border:1px solid color-mix(in oklab,var(--acc) 50%,transparent)}
+#auth{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;background:var(--bg);overflow:auto}
+.authcard{inline-size:min(100%,420px)}
+.authcard .brand{margin-block-end:14px}
+.authcard h2{font-size:24px;margin-block-end:14px}
+.authcard fieldset legend:empty{display:none}
+.st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--mute)}
+.brand{gap:10px}.brand .wm{color:var(--ink);flex:none}.brand .lg{flex:none;filter:drop-shadow(0 5px 10px color-mix(in oklab,var(--pri) 35%,transparent))}
+.mbrand{display:none;margin-block-end:12px}
+.svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.svc{display:grid;justify-items:center;gap:10px;padding:16px 8px;border:1px solid var(--line);border-radius:18px;background:var(--bg);font-weight:600;font-size:13px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.svc:hover{transform:translateY(-2px);border-color:color-mix(in oklab,var(--pri) 40%,var(--line));box-shadow:0 12px 24px -14px color-mix(in oklab,var(--pri) 60%,transparent)}
+.svc .ic{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;box-shadow:0 8px 16px -8px var(--g2)}
+.dot{display:inline-block;inline-size:9px;block-size:9px;border-radius:50%;margin-inline-end:8px}.dot.ok{background:var(--pri)}.dot.warn{background:var(--acc)}
+.status{margin:16px 2px 0;font-size:13px;color:var(--mute)}
+.tbl{overflow-x:auto;margin-block-end:8px}.tbl table{inline-size:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}.tbl th,.tbl td{padding:9px 8px;text-align:start;border-block-end:1px solid var(--line);white-space:nowrap}.tbl th{font-size:12px;color:var(--mute);font-weight:600}
+.sub{font-size:16px;margin:20px 0 8px}
+.av{display:grid;place-items:center;inline-size:52px;block-size:52px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--acc));color:var(--on);font:800 22px "Bricolage Grotesque",sans-serif;flex:none}
+.icon-btn{position:relative}#belldot{position:absolute;inset:9px 10px auto auto;inline-size:9px;block-size:9px;border-radius:50%;background:var(--err);border:2px solid var(--surf)}
+#bnav .fabc{display:grid;place-items:center;inline-size:54px;block-size:54px;border-radius:50%;margin-block-start:-30px;background:linear-gradient(135deg,var(--pri),oklch(70% .14 130));color:var(--on);border:4px solid var(--bg);box-shadow:0 10px 22px -8px color-mix(in oklab,var(--pri) 70%,transparent)}
+#bnav .fab{color:var(--pri);font-weight:600}
+@media (max-width:860px){.mbrand{display:flex}.top h1{font-size:22px}.top .icon-btn{inline-size:38px;block-size:38px}.top>div:last-child{gap:6px!important}}
+#splash{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(90% 60% at 50% 32%,oklch(50% .11 165/.55),transparent 70%),linear-gradient(160deg,#0B6B4C,#032F23 72%);color:#fff;text-align:center;transition:opacity .5s,visibility .5s;cursor:pointer}
+#splash.out{opacity:0;visibility:hidden}
+#splash .lg{filter:drop-shadow(0 16px 40px #0009);animation:sp-in 1s cubic-bezier(.2,.8,.2,1) both}
+#splash .wm{color:#fff;margin-block-start:18px;animation:sp-in 1s .3s both}
+#splash p{margin:12px 0 0;font-size:15px;letter-spacing:.03em;animation:sp-in .9s .7s both}#splash p b{color:#FCD34D}
+#splash .bar{inline-size:56px;block-size:3px;border-radius:9px;background:#fff3;overflow:hidden;margin-block-start:28px;animation:sp-in .6s 1s both}
+#splash .bar::after{content:"";display:block;block-size:100%;inline-size:40%;background:linear-gradient(90deg,#FCD34D,#fff);border-radius:inherit;animation:sp-bar 1.2s ease-in-out infinite}
+@keyframes sp-in{from{opacity:0;transform:translateY(12px) scale(.94)}}
+@keyframes sp-bar{from{translate:-100%}to{translate:260%}}
+#auth{place-items:start center;background:radial-gradient(80% 45% at 50% 0%,color-mix(in oklab,var(--pri) 20%,transparent),transparent 70%),var(--bg)}
+.authcard{margin-block:auto}
+.hero{display:flex;flex-direction:column;align-items:center;gap:10px;margin:2px 0 14px}.hero .lg{filter:drop-shadow(0 12px 22px color-mix(in oklab,var(--pri) 40%,transparent))}.hero .wm{color:var(--ink)}
+.ctr{text-align:center}
+.linkbtn{color:var(--pri);font-weight:600;padding:2px;text-decoration:underline;text-underline-offset:3px;font-size:inherit}
+.toplink{margin:0 0 6px;text-decoration:none;font-size:14px}
+.lead{margin:-6px 0 16px!important;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 18px}.stp i{display:block;block-size:5px;border-radius:99px;background:var(--line);margin-block-end:5px}.stp span{font-size:11px;color:var(--mute)}.stp.done i{background:var(--pri)}.stp.now i{background:linear-gradient(90deg,var(--pri),var(--acc))}.stp.now span{color:var(--ink);font-weight:600}
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:-6px 0 6px}.meter i{block-size:6px;border-radius:9px;background:var(--line);transition:background .2s}
+.meter[data-s="1"] i:nth-child(-n+1){background:var(--err)}.meter[data-s="2"] i:nth-child(-n+2){background:var(--acc)}.meter[data-s="3"] i:nth-child(-n+3){background:oklch(72% .15 150)}.meter[data-s="4"] i{background:var(--pri)}
+.mlabel{font-size:12px;font-weight:600;color:var(--mute);margin:0 0 8px;min-block-size:1.3em}
+.chk{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:4px;font-size:13px;color:var(--mute)}.chk li::before{content:"○";margin-inline-end:8px}.chk li.ok{color:var(--pri)}.chk li.ok::before{content:"✓";font-weight:800}
+.pin-sm{justify-content:flex-start;margin-block:4px 0}.pin-sm input{inline-size:52px;block-size:60px;font-size:22px}
+.agree{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:14px}.agree input{margin-block-start:3px;inline-size:18px;block-size:18px;flex:none}
+.protect{background:var(--bg);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--mute);margin-block-end:14px}.protect ul{margin:6px 0 0;padding-inline-start:18px;display:grid;gap:3px}
+.trustline{display:flex;gap:8px;align-items:center;justify-content:center;font-size:12px;color:var(--mute);margin:16px 0 0;text-align:start}
+.pwrap{position:relative}.pwrap input{padding-inline-end:48px}.eyeb{position:absolute;inset-block:0;inset-inline-end:6px;display:grid;place-items:center;inline-size:40px;color:var(--mute)}
+ul.plain{padding-inline-start:18px;margin:0 0 14px;display:grid;gap:8px}
+.codes{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+a.codea{display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid var(--pri);background:color-mix(in oklab,var(--pri) 10%,var(--surf));color:var(--pri);font-weight:700;text-decoration:none}a.codea.alt{border-color:var(--line);background:var(--bg);color:var(--mute);font-weight:600}
+.phero{border-radius:22px;padding:22px 18px;margin:0 0 16px;color:#fff;text-align:center;background:radial-gradient(120% 90% at 100% 0%,oklch(66% .15 95/.35),transparent 60%),linear-gradient(150deg,oklch(40% .09 165),oklch(24% .05 175))}
+.phero h2{font-size:22px;margin:12px 0 2px}.phero p{opacity:.85;margin:0}.phero small{display:block;margin-top:10px;opacity:.92}.av.big{inline-size:72px;block-size:72px;font-size:30px;margin:0 auto;border:3px solid #fff5}
+details.acc{border:1px solid var(--line);border-radius:16px;margin-block-end:10px;background:var(--bg)}
+details.acc>summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 14px;font-weight:600;cursor:pointer}details.acc>summary::-webkit-details-marker{display:none}
+.chev{margin-inline-start:auto;inline-size:9px;block-size:9px;border-inline-end:2px solid var(--mute);border-block-end:2px solid var(--mute);rotate:45deg;transition:rotate .2s;margin-block-end:3px}details[open]>summary .chev{rotate:225deg;margin-block-end:-3px}
+.accb{padding:4px 14px 16px}
+.linkrow{display:flex;align-items:center;gap:12px;inline-size:100%;padding:12px 14px;border:1px solid var(--line);border-radius:16px;margin-block-end:10px;background:var(--bg);font-weight:600;text-align:start}
+.hamb{display:none}
+#drawer{position:fixed;inset:0;z-index:50;visibility:hidden;transition:visibility .3s}#drawer.open{visibility:visible}
+.dscrim{position:absolute;inset:0;background:oklch(15% .03 170/.5);backdrop-filter:blur(3px);opacity:0;transition:opacity .28s}.open .dscrim{opacity:1}
+.dpanel{position:absolute;inset-block:0;inset-inline-start:0;inline-size:min(84%,320px);background:var(--surf);padding:calc(18px + env(safe-area-inset-top,0px)) 14px calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);overflow:auto;display:flex;flex-direction:column;gap:2px}.open .dpanel{transform:none}
+.dtop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 6px 14px;margin-block-end:8px;border-block-end:1px solid var(--line)}.dtop b{display:block;font-size:17px}.dtop small{color:var(--mute)}
+.di{display:flex;align-items:center;gap:12px;inline-size:100%;padding:12px 14px;border-radius:12px;font-weight:500;color:var(--mute);text-align:start}.di[aria-current=page]{background:color-mix(in oklab,var(--pri) 14%,transparent);color:var(--pri);font-weight:600}.dpanel hr{border:0;border-block-start:1px solid var(--line);margin:8px 0;inline-size:100%}
+@media (max-width:860px){.hamb{display:grid}}
+#install{position:fixed;inset-inline:12px;bottom:calc(var(--ib,14px) + env(safe-area-inset-bottom,0px));z-index:60;max-inline-size:440px;margin-inline:auto;background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 24px 60px -18px #0008;animation:ins-up .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ins-up{from{opacity:0;transform:translateY(24px)}}
+.ins-top{display:flex;gap:14px;align-items:center}.ins-top b{display:block;font-size:17px}.ins-top p{margin:2px 0 0;font-size:13px;color:var(--mute);line-height:1.35}
+.ins-steps{margin:12px 0 0;padding:10px 12px;border-radius:14px;background:var(--bg);font-size:13px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ins-btns{display:flex;gap:10px;margin-block-start:14px}.ins-btns .btn{flex:1;margin:0;inline-size:auto;padding:12px 14px}.ins-btns .ghost{inline-size:auto}
+.vrow{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 4px}
+.vb{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;color:var(--ink)}
+.v-daily{background:color-mix(in oklab,var(--acc) 38%,transparent)}.v-weekly{background:color-mix(in oklab,oklch(65% .14 250) 28%,transparent)}.v-monthly{background:color-mix(in oklab,var(--pri) 22%,transparent)}
+.tg{display:inline-block;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:600;color:var(--mute);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="handset" viewBox="0 0 24 24"><path d="M7 2h10a1 1 0 011 1v18a1 1 0 01-1 1H7a1 1 0 01-1-1V3a1 1 0 011-1zM11 18h2"/></symbol>
+<symbol id="wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="tv" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/></symbol>
+<symbol id="out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+<symbol id="logo" viewBox="0 0 64 64"><defs>
+<linearGradient id="lg-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B7A55"/><stop offset="1" stop-color="#032F23"/></linearGradient>
+<linearGradient id="lg-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A7F3D0"/><stop offset="1" stop-color="#10B981"/></linearGradient>
+<linearGradient id="lg-b" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#FEF08A"/></linearGradient>
+<radialGradient id="lg-h" cx=".22" cy=".12" r=".85"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+</defs><rect width="64" height="64" rx="18" fill="url(#lg-bg)"/>
+<rect width="64" height="64" rx="18" fill="url(#lg-h)"/>
+<path d="M16 21 31 47" stroke="url(#lg-a)" stroke-width="9" stroke-linecap="round" fill="none"/>
+<path d="M31 47 46 20" stroke="#021F17" stroke-opacity=".30" stroke-width="13" stroke-linecap="round" fill="none"/>
+<path d="M31 47 46 20" stroke="url(#lg-b)" stroke-width="9" stroke-linecap="round" fill="none"/>
+<path d="M57 19A11 11 0 0 0 48.9 9.4" stroke="#FDE68A" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+<path d="M61.9 18.6A16 16 0 0 0 50.1 4.5" stroke="#FDE68A" stroke-opacity=".55" stroke-width="3.4" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="wm" viewBox="0 0 176 70"><g fill="none" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="currentColor"><path d="M4 24 14 48 24 24"/><path d="M32 36H56A12 12 0 1 0 52 44.5"/><path d="M68 24V48M68 34A9 9 0 0 1 86 34V48"/><circle cx="108" cy="36" r="12"/><path d="M120 10V48"/></g>
+<g stroke="#F59E0B"><path d="M136 10V48"/><path d="M146 24 157 47M168 24 152 60"/></g></g></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 004 0"/></symbol>
+<symbol id="headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2M4 14h3v5H5a1 1 0 01-1-1zM20 14h-3v5h2a1 1 0 001-1zM17 19v1a2 2 0 01-2 2h-3"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="share" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4M6 11H5a1 1 0 00-1 1v8a1 1 0 001 1h14a1 1 0 001-1v-8a1 1 0 00-1-1h-1"/></symbol>
+</defs></svg>
+
+<div id="splash" role="presentation"><svg class="lg" width="104" height="104" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" width="150" height="60" aria-label="Vendly"><use href="#wm"/></svg><p>Top up. Pay bills. <b>Done.</b></p><div class="bar"></div></div>
+<div id="install" role="dialog" aria-label="Install Vendly" hidden></div>
+<div id="drawer" role="dialog" aria-modal="true" aria-label="Menu"><div class="dscrim" data-act="drawer-close"></div><aside class="dpanel"></aside></div>
+<div class="shell" id="shell" hidden>
+  <aside class="side">
+    <div class="brand"><svg class="lg" width="38" height="38" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" width="66" height="26" aria-label="Vendly"><use href="#wm"/></svg></div>
+    <nav id="nav" aria-label="Services"></nav>
+    <p class="fine">Demo environment. No real money or airtime moves.</p>
+  </aside>
+  <main>
+    <header class="top">
+      <div><div class="brand mbrand"><button class="icon-btn hamb" data-act="drawer" aria-label="Menu"><svg class="i"><use href="#menu"/></svg></button><svg class="lg" width="38" height="38" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" width="66" height="26" aria-label="Vendly"><use href="#wm"/></svg></div><p class="mute" id="date"></p><h1 id="hello"></h1></div>
+      <div style="display:flex;gap:8px"><button class="icon-btn" data-act="notif" aria-label="Notifications"><svg class="i"><use href="#bell"/></svg><i id="belldot"></i></button><button class="icon-btn" id="logout" aria-label="Log out"><svg class="i"><use href="#out"/></svg></button><button class="icon-btn" id="theme" aria-label="Switch theme"><svg class="i"><use href="#moon"/></svg></button></div>
+    </header>
+    <p class="banner" id="banner" hidden></p>
+    <div class="grid">
+      <section class="wcard" aria-label="Wallet">
+        <div class="r1"><span>Vendly wallet</span><span>•••• 4821</span></div>
+        <p class="lab">Available balance</p>
+        <div class="num big" id="bal"></div>
+        <div class="acts">
+          <button class="btn acc" id="fund"><svg class="i"><use href="#plus"/></svg>Add test money</button>
+          <button class="icon-btn" id="hidebal" aria-label="Show or hide balance"><svg class="i"><use href="#eye"/></svg></button>
+        </div>
+      </section>
+      <section class="panel" id="work"></section>
+      <section class="panel" id="stats"></section>
+    </div>
+  </main>
+</div>
+<nav class="bottom" id="bnav" aria-label="Services" hidden></nav>
+<div id="auth" hidden></div>
+<dialog id="dlg"></dialog>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fmt=n=>"₦"+Number(n).toLocaleString("en-NG");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ico=n=>`<svg class="i" aria-hidden="true"><use href="#${n}"/></svg>`;
+const ls={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}},del(k){try{localStorage.removeItem(k)}catch{}}};
+const rid=()=>crypto.randomUUID?crypto.randomUUID():"r"+Date.now()+Math.random().toString(36).slice(2);
+
+const NETS={MTN:["M","#FFCC00","#2a2000"],Airtel:["A","#E4002B","#fff"],Glo:["G","#00A651","#fff"],"9mobile":["9","#006B3F","#fff"]};
+const PRE={MTN:"0803 0806 0703 0706 0813 0816 0810 0814 0903 0906 0913 0916 0704",Airtel:"0802 0808 0708 0812 0701 0902 0907 0901 0912",Glo:"0805 0807 0705 0815 0811 0905 0915","9mobile":"0809 0818 0817 0909 0908"};
+const MULT={MTN:1,Airtel:.98,Glo:.9,"9mobile":.95};
+const BASE=[["100MB","1 day",100],["350MB","1 day",200],["500MB","7 days",150],["1GB","7 days",300],["2GB","30 days",600],["5GB","30 days",1500],["10GB","30 days",2800],["20GB","30 days",5200]];
+const DISCOS=["Abuja (AEDC)","Eko (EKEDC)","Ikeja (IKEDC)","Port Harcourt (PHED)","Ibadan (IBEDC)","Kano (KEDCO)","Enugu (EEDC)","Kaduna (KAEDCO)"];
+const CABLE={DStv:[["Padi",4400],["Yanga",6000],["Confam",11000],["Compact",19000]],GOtv:[["Smallie",1900],["Jinja",3900],["Jolli",5800],["Max",8500]],StarTimes:[["Nova",1900],["Basic",3700],["Smart",5200]]};
+const NAV=[["home","Home","home"],["airtime","Airtime","handset"],["data","Data","wifi"],["power","Power","bolt"],["tv","TV","tv"],["history","History","clock"],["prices","Prices","tag"],["profile","Profile","user"]];
+const ICON={airtime:"handset",data:"wifi",power:"bolt",tv:"tv"};
+const META={airtime:["Buy airtime","Instant top-up on any Nigerian network."],data:["Buy data","Pick a bundle and it lands in seconds."],power:["Pay electricity","Prepaid and postpaid meters, any disco."],tv:["Renew TV","DStv, GOtv and StarTimes subscriptions."],history:["Transactions","Open any row to see its receipt."],prices:["Prices & status","What each service costs and whether it is running."],profile:["Profile","Your account and security."]};
+const SUPPORT_WA=""; /* put your WhatsApp number here, e.g. "2348012345678" */
+const STATUS={MTN:"ok",Airtel:"ok",Glo:"ok","9mobile":"ok"}; /* the admin panel will drive this later */
+const NOTICES=[["Welcome to Vendly","Add money to your wallet and make your first purchase. Your PIN protects every payment."],["Stay safe","Never share your PIN or password with anyone. Vendly will never ask for them."]];
+const SVC=[["airtime","Airtime","handset","#2563EB","#1D4ED8"],["data","Data","wifi","#7C3AED","#4F46E5"],["power","Electricity","bolt","#EF4444","#B91C1C"],["tv","Cable TV","tv","#A855F7","#7E22CE"]];
+
+/*MOCK*/
+const COMMON=["password","password1","password123","12345678","123456789","1234567890","qwerty123","qwertyuiop","iloveyou","admin123","welcome1","welcome123","abc12345","11111111","00000000","letmein123","passw0rd","nigeria123","naija123","vendly123","football1","monkey123","dragon123"];
+function pwChecks(pw,name,phone){
+  const l=pw.toLowerCase(),n=String(name||"").toLowerCase().split(/\s+/).filter(w=>w.length>=3),p=String(phone||"");
+  const own=n.some(w=>l.includes(w))||(p.length>=7&&(l.includes(p)||l.includes(p.slice(-7))));
+  return [["At least 8 characters",pw.length>=8],["Upper and lower case letters",/[a-z]/.test(pw)&&/[A-Z]/.test(pw)],["At least one number",/\d/.test(pw)],["Not a common password",!!pw&&!COMMON.includes(l)],["Doesn’t contain your name or number",!!pw&&!own]];
+}
+const pwMsg=["Password must be at least 8 characters.","Use both upper and lower case letters in your password.","Add at least one number to your password.","That password is too common. Choose another.","Your password can’t contain your name or phone number."];
+const pwProblem=(pw,name,phone)=>{const c=pwChecks(pw,name,phone).findIndex(x=>!x[1]);return c<0?null:pwMsg[c]};
+function pinProblem(pin){
+  if(!/^\d{4}$/.test(pin))return "PIN must be 4 digits.";
+  const d=[...pin].map(Number);
+  if(d.every(x=>x===d[0])||d.every((x,i)=>!i||x===d[i-1]+1)||d.every((x,i)=>!i||x===d[i-1]-1)||["1212","2121","1122","6969","1004","2000","2580","1357","2468"].includes(pin))return "Choose a PIN that isn’t easy to guess (not 1234, 1111 or similar).";
+  return null;
+}
+function makeMock(store){
+  let d=JSON.parse(store.get("vendly_demo")||"null")||{u:null,on:0,bal:0,tx:[],fails:0,lock:0};
+  const save=()=>store.set("vendly_demo",JSON.stringify(d));
+  const E=(status,m)=>{throw Object.assign(new Error(m),{status})};
+  const pu=()=>({id:1,name:d.u.name,phone:d.u.phone,since:d.u.since});
+  const pt=t=>{const{req,...r}=t;return r};
+  const need=()=>{if(!d.u||!d.on)E(401,"Please log in again.")};
+  const pinCheck=pin=>{
+    if(d.lock>Date.now())E(423,"PIN locked. Try again in a few minutes.");
+    if(pin!==d.u.pin){
+      d.fails++;
+      if(d.fails>=5){d.fails=0;d.lock=Date.now()+9e5;save();E(423,"Too many wrong PINs. Locked for 15 minutes.")}
+      save();E(403,"Incorrect PIN.");
+    }
+    d.fails=0;
+  };
+  return async(method,path,b={})=>{
+    await new Promise(r=>setTimeout(r,250));
+    const k=method+" "+path;
+    if(k==="POST /api/register"){
+      const name=String(b.name||"").trim();
+      if(name.length<2)E(400,"Enter your name.");
+      if(!/^0\d{10}$/.test(b.phone||""))E(400,"Enter a valid 11-digit phone number.");
+      const pw=pwProblem(String(b.password||""),name,b.phone);if(pw)E(400,pw);
+      const pp=pinProblem(String(b.pin||""));if(pp)E(400,pp);
+      if(b.agreed!==true)E(400,"Please accept the Terms and Privacy Policy.");
+      d={u:{name,phone:b.phone,password:b.password,pin:b.pin,since:Date.now()},on:1,bal:0,tx:[],fails:0,lock:0};save();
+      return{token:"demo",user:pu(),balance:0};
+    }
+    if(k==="POST /api/login"){
+      if(!d.u||d.u.phone!==b.phone||d.u.password!==b.password)E(401,"Wrong phone number or password. (Demo: create an account first.)");
+      d.on=1;save();return{token:"demo",user:pu(),balance:d.bal};
+    }
+    if(k==="POST /api/logout"){d.on=0;save();return{}}
+    need();
+    if(k==="GET /api/me")return{user:pu(),balance:d.bal};
+    if(k==="GET /api/transactions")return{transactions:d.tx.map(pt)};
+    if(k==="POST /api/password"){
+      if(b.current!==d.u.password)E(403,"Your current password is wrong.");
+      const pw=pwProblem(String(b.next||""),d.u.name,d.u.phone);if(pw)E(400,pw);
+      d.u.password=b.next;save();return{token:"demo"};
+    }
+    if(k==="POST /api/pin"){pinCheck(b.current);const pp=pinProblem(String(b.next||""));if(pp)E(400,pp);d.u.pin=b.next;save();return{ok:true}}
+    if(k==="POST /api/wallet/fund-test"){
+      if(!Number.isInteger(b.amount)||b.amount<1||b.amount>100000)E(400,"Invalid amount.");
+      d.bal+=b.amount;save();return{balance:d.bal};
+    }
+    if(k==="POST /api/purchase"){
+      const prev=d.tx.find(t=>t.req===b.requestId);
+      if(prev)return{tx:pt(prev),balance:d.bal,replay:true};
+      pinCheck(b.pin);
+      if(d.bal<b.amount)E(402,"Wallet balance is too low.");
+      const t={req:b.requestId,id:Date.now(),kind:b.kind,title:b.title,detail:b.detail,amount:b.amount,status:"success",ref:"VND"+Math.random().toString(36).slice(2,9).toUpperCase(),token:null,created_at:Date.now()};
+      if(String(b.detail).endsWith("0000"))t.status="refunded";
+      else{d.bal-=b.amount;if(b.kind==="power")t.token=Array.from({length:5},()=>1000+Math.floor(Math.random()*9000)).join("-")}
+      d.tx.unshift(t);save();return{tx:pt(t),balance:d.bal};
+    }
+    E(404,"Not found.");
+  };
+}
+/*ENDMOCK*/
+
+let DEMO=false,MODE="sandbox",TOK=ls.get("vendly_token"),HIDE=false,AM="login";
+const S={user:null,bal:0,tx:[]};
+const F={view:"home",q:"",vf:"all",net:"MTN",phone:"",amount:"",plan:0,disco:DISCOS[0],mtype:"Prepaid",meter:"",cable:"DStv",pkg:0,card:"",flt:"all"};
+const AF={name:"",phone:"",password:"",password2:"",pin:"",pin2:"",agree:false};let AS=1;
+const mock=makeMock(ls);
+
+async function api(method,path,body){
+  if(DEMO)return mock(method,path,body);
+  let r;
+  try{r=await fetch(path,{method,headers:{"content-type":"application/json",...(TOK&&{authorization:"Bearer "+TOK})},body:body?JSON.stringify(body):undefined})}
+  catch{throw Object.assign(new Error("Can’t reach the server. Check your connection."),{status:0})}
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok)throw Object.assign(new Error(j.error||"Something went wrong."),{status:r.status});
+  return j;
+}
+async function detect(){
+  try{const j=await(await fetch("/api/health",{cache:"no-store"})).json();if(j.ok){MODE=j.mode;return}}catch{}
+  DEMO=true;
+}
+const price=i=>Math.round(BASE[i][2]*MULT[F.net]/10)*10;
+const detectNet=v=>Object.keys(PRE).find(n=>PRE[n].split(" ").some(p=>v.startsWith(p)));
+const when=t=>new Date(t).toLocaleString("en-NG",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+
+const badge=n=>`<b class="logo" style="--bg:${NETS[n][1]};--fg:${NETS[n][2]}">${NETS[n][0]}</b>`;
+const opt=(name,val,inner,on,cls="")=>`<label class="opt ${cls}"><input type="radio" name="${name}" value="${esc(val)}"${on?" checked":""}>${inner}</label>`;
+const fs=(l,b,c="")=>`<fieldset><legend>${l}</legend><div class="${c}">${b}</div></fieldset>`;
+const fld=(id,l,ph,v,m,type="text",im="numeric")=>{const inp=`<input id="${id}" type="${type}" inputmode="${im}" maxlength="${m}" placeholder="${ph}" value="${esc(v)}" autocomplete="off">`;return `<div class="fld"><label for="${id}">${l}</label>${type==="password"?`<div class="pwrap">${inp}<button type="button" class="eyeb" data-eye="${id}" aria-label="Show or hide">${ico("eye")}</button></div>`:inp}</div>`};
+const presets=a=>fs("Quick amounts",a.map(x=>opt("amount",x,fmt(x),String(F.amount)===String(x),"pill")).join(""),"chips");
+const netPick=()=>fs("Network",Object.keys(NETS).map(n=>opt("net",n,badge(n)+n,F.net===n)).join(""),"nets")+`<div style="margin:-6px 0 16px"><button type="button" class="pill" data-act="bal">Check my airtime &amp; data balance</button></div>`;
+const phone=()=>fld("phone","Phone number","0803 000 0000",F.phone,11)+`<p class="mute" id="lastup" style="margin:-10px 2px 16px;font-size:13px;min-block-size:1.2em">${lastUpText()}</p>`;
+
+const vkind=t=>{const d=parseInt(t);return d<=2?"daily":d<=14?"weekly":"monthly"};
+function formHTML(){
+  const v=F.view,[t,s]=META[v];let b="";
+  if(v==="airtime")b=netPick()+phone()+presets([100,200,500,1000,2000])+fld("amt","Or enter an amount","Minimum ₦50",F.amount,6);
+  if(v==="data"){
+    const vis=BASE.map((p,i)=>i).filter(i=>F.vf==="all"||vkind(BASE[i][1])===F.vf);
+    if(!vis.includes(F.plan))F.plan=vis[0];
+    b=netPick()+phone()+fs("How long should it last?",[["all","All"],["daily","Daily"],["weekly","Weekly"],["monthly","Monthly"]].map(([k,n])=>opt("vf",k,n,F.vf===k,"pill")).join(""),"chips")+fs("Data plan",vis.map(i=>{const p=BASE[i];return opt("plan",i,`<b>${p[0]}</b><span class="vrow"><span class="vb v-${vkind(p[1])}">${p[1]}</span>${p[3]?`<span class="tg">${esc(p[3])}</span>`:""}</span><em data-i="${i}">${fmt(price(i))}</em>`,F.plan===i,"plan")}).join(""),"plans");
+  }
+  if(v==="power")b=`<div class="fld"><label for="disco">Distribution company</label><select id="disco">${DISCOS.map(d=>`<option${d===F.disco?" selected":""}>${d}</option>`).join("")}</select></div>`+fs("Meter type",["Prepaid","Postpaid"].map(m=>opt("mtype",m,m,F.mtype===m,"pill")).join(""),"seg")+fld("meter","Meter number","11 to 13 digits",F.meter,13)+presets([1000,2000,5000,10000])+fld("amt","Or enter an amount","Minimum ₦1,000",F.amount,6);
+  if(v==="tv")b=fs("Provider",Object.keys(CABLE).map(c=>opt("cable",c,c,F.cable===c,"pill")).join(""),"chips")+fs("Package",CABLE[F.cable].map((p,i)=>opt("pkg",i,`<b>${p[0]}</b><small>per month</small><em>${fmt(p[1])}</em>`,F.pkg===i,"plan")).join(""),"plans")+fld("card","Smartcard / IUC number","10 or 11 digits",F.card,11);
+  return `<div class="ph"><span class="ic">${ico(ICON[v])}</span><div><h2>${t}</h2><p>${s}</p></div></div>${b}<p class="err" id="err" role="alert"></p><button class="btn pri" id="review">Review purchase</button>`;
+}
+const txRow=t=>`<button class="tx" data-tx="${esc(t.ref)}"><span class="ic">${ico(ICON[t.kind]||"handset")}</span><span class="t"><b>${esc(t.title)}</b><small>${esc(t.detail)} · ${when(t.created_at)}</small></span><span class="amt">${t.status==="refunded"?'<span class="st">Refunded</span>':"−"+fmt(t.amount)}</span></button>`;
+const txRows=()=>{const q=F.q.trim().toLowerCase();const l=S.tx.filter(t=>(F.flt==="all"||t.kind===F.flt)&&(!q||[t.title,t.detail,t.ref].join(" ").toLowerCase().includes(q)));return l.length?l.map(txRow).join(""):'<p class="empty">No matching purchases.</p>'};
+const phead=(ic,t,s)=>`<div class="ph"><span class="ic">${ic}</span><div><h2>${t}</h2><p>${s}</p></div></div>`;
+function homeHTML(){
+  const bad=Object.entries(STATUS).filter(([,v])=>v!=="ok").map(([k])=>k);
+  return phead(ico("handset"),"What do you need today?","Pick a service to get started.")+
+  `<div class="svcs">${SVC.map(([v,n,i,a,b])=>`<button class="svc" data-view="${v}" style="--g1:${a};--g2:${b}"><span class="ic">${ico(i)}</span>${n}</button>`).join("")}<button class="svc" data-view="prices" style="--g1:#059669;--g2:#047857"><span class="ic">${ico("tag")}</span>Prices</button><button class="svc" data-act="support" style="--g1:#EC4899;--g2:#BE185D"><span class="ic">${ico("headset")}</span>Support</button></div>`+
+  `<p class="status"><i class="dot ${bad.length?"warn":"ok"}"></i>${bad.length?esc(bad.join(", "))+" may be slow right now.":"All networks are running normally."}</p>`+
+  `<div class="sh" style="margin-block-start:22px"><h3>Recent activity</h3><button class="pill" data-view="history">See all</button></div>`+(S.tx.length?S.tx.slice(0,3).map(txRow).join(""):'<p class="empty">Your purchases will show up here.</p>');
+}
+function histHTML(){
+  return phead(ico("clock"),META.history[0],META.history[1])+
+  `<div class="fld"><label for="q">Search</label><input id="q" type="search" placeholder="Name, number or reference" value="${esc(F.q)}" autocomplete="off"></div>`+
+  fs("Filter",["all","airtime","data","power","tv"].map(k=>opt("flt",k,k[0].toUpperCase()+k.slice(1),F.flt===k,"pill")).join(""),"chips")+`<div id="txlist">${txRows()}</div>`;
+}
+function pricesHTML(){
+  const nets=Object.keys(NETS);
+  return phead(ico("tag"),META.prices[0],META.prices[1])+
+  `<h3 class="sub">Data plans</h3><div class="tbl"><table><thead><tr><th>Plan</th>${nets.map(n=>`<th>${n}</th>`).join("")}</tr></thead><tbody>${BASE.map(p=>`<tr><td>${p[0]} <small>${p[1]}</small></td>${nets.map(n=>`<td>${fmt(Math.round(p[2]*MULT[n]/10)*10)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`+
+  `<h3 class="sub">Cable TV, per month</h3><div class="tbl"><table><tbody>${Object.entries(CABLE).flatMap(([c,l])=>l.map(p=>`<tr><td>${c} ${p[0]}</td><td>${fmt(p[1])}</td></tr>`)).join("")}</tbody></table></div>`+
+  `<h3 class="sub">Service status</h3>`+Object.entries(STATUS).map(([k,v])=>`<div class="row"><span style="display:flex;gap:8px;align-items:center">${badge(k)}${k}</span><span><i class="dot ${v==="ok"?"ok":"warn"}"></i>${v==="ok"?"Operational":"Slow right now"}</span></div>`).join("")+
+  `<p class="mute" style="font-size:13px;margin-block-start:14px">Example prices for this preview. Live prices will be set from the admin panel.</p>`;
+}
+function profileHTML(){
+  const u=S.user||{name:"",phone:""};
+  const since=u.since?new Date(u.since).toLocaleDateString("en-NG",{day:"numeric",month:"short",year:"numeric"}):"Today";
+  const acc=(ic,t,b)=>`<details class="acc"><summary><span class="ic">${ico(ic)}</span>${t}<i class="chev"></i></summary><div class="accb">${b}</div></details>`;
+  return `<div class="phero"><span class="av big">${esc((u.name||"?")[0].toUpperCase())}</span><h2>${esc(u.name)}</h2><p>${esc(u.phone)}</p><small>Account settings &amp; security</small></div>`+
+  acc("user","Personal details",`<div class="row"><span>Name</span><span>${esc(u.name)}</span></div><div class="row"><span>Phone</span><span>${esc(u.phone)}</span></div><div class="row"><span>Member since</span><span>${since}</span></div><div class="row"><span>Purchases</span><span>${S.tx.length}</span></div>`)+
+  acc("shield","Security &amp; password",`${fld("cp-cur","Current password","Current password","",60,"password","text")}${fld("cp-new","New password","New password","",60,"password","text")}${fld("cp-new2","Confirm new password","Type it again","",60,"password","text")}<p class="err" id="cperr" role="alert"></p><button class="btn pri" id="chpw">Change password</button>`)+
+  acc("handset","Transaction PIN",`${fld("cpin-cur","Current PIN","Current PIN","",4,"password")}${fld("cpin-new","New PIN","New 4-digit PIN","",4,"password")}<p class="err" id="cpinerr" role="alert"></p><button class="btn pri" id="chpin">Change PIN</button>`)+
+  `${canInstall()?`<button class="linkrow" data-act="install"><span class="ic">${ico("plus")}</span>Install Vendly app</button>`:""}<button class="linkrow" data-act="notif"><span class="ic">${ico("bell")}</span>Notifications</button><button class="linkrow" data-act="support"><span class="ic">${ico("headset")}</span>Support &amp; contact</button><button class="linkrow" data-act="logout" style="color:var(--err)"><span class="ic" style="color:var(--err)">${ico("out")}</span>Secure log out</button>`;
+}
+async function chPw(){
+  const e=$("#cperr"),cur=$("#cp-cur").value,nw=$("#cp-new").value,n2=$("#cp-new2").value;
+  e.style.color="var(--err)";
+  const bad=pwChecks(nw,S.user.name,S.user.phone).find(x=>!x[1]);
+  if(!cur)return e.textContent="Enter your current password.";
+  if(bad)return e.textContent="New password rule not met: "+bad[0].toLowerCase()+".";
+  if(nw!==n2)return e.textContent="The two new passwords don’t match.";
+  try{
+    const r=await api("POST","/api/password",{current:cur,next:nw});
+    TOK=r.token;if(!DEMO)ls.set("vendly_token",TOK);
+    ["cp-cur","cp-new","cp-new2"].forEach(i=>$("#"+i).value="");
+    e.style.color="var(--pri)";e.textContent="Password changed. Your other devices were logged out.";
+  }catch(x){e.textContent=x.message}
+}
+async function chPin(){
+  const e=$("#cpinerr"),cur=$("#cpin-cur").value,nw=$("#cpin-new").value;
+  e.style.color="var(--err)";
+  if(!/^\d{4}$/.test(cur))return e.textContent="Enter your current 4-digit PIN.";
+  const p=pinProblem(nw);if(p)return e.textContent=p;
+  try{await api("POST","/api/pin",{current:cur,next:nw});["cpin-cur","cpin-new"].forEach(i=>$("#"+i).value="");e.style.color="var(--pri)";e.textContent="PIN changed."}
+  catch(x){e.textContent=x.message}
+}
+const VIEWS={home:homeHTML,history:histHTML,prices:pricesHTML,profile:profileHTML};
+function stats(){
+  const d0=new Date();d0.setHours(0,0,0,0);
+  const days=Array.from({length:7},(_,i)=>({d:new Date(+d0-(6-i)*864e5),v:0}));let n=0;
+  S.tx.forEach(t=>{if(t.status!=="success")return;const k=6-Math.floor((+d0-new Date(t.created_at).setHours(0,0,0,0))/864e5);if(k>=0&&k<7){days[k].v+=t.amount;n++}});
+  const tot=days.reduce((a,x)=>a+x.v,0),mx=Math.max(...days.map(x=>x.v),1);
+  $("#stats").innerHTML=`<div class="sh"><h3>This week</h3><small>Last 7 days</small></div><div class="kpis"><div class="kpi"><small>Spent</small><b>${fmt(tot)}</b></div><div class="kpi"><small>Purchases</small><b>${n}</b></div></div><div class="bars" role="img" aria-label="Daily spending for the last 7 days">${days.map((x,i)=>`<div class="bar${i===6?" now":""}" title="${fmt(x.v)}"><i style="--h:${Math.round(x.v/mx*100)}%"></i>${x.d.toLocaleDateString("en",{weekday:"narrow"})}</div>`).join("")}</div>`;
+}
+function render(){
+  $$("[data-view]").forEach(b=>b.setAttribute("aria-current",b.dataset.view===F.view?"page":"false"));
+  $("#work").innerHTML=(VIEWS[F.view]||formHTML)();$("#belldot").hidden=!!ls.get("vendly_seen");
+  $("#bal").textContent=HIDE?"₦ ••••••":fmt(S.bal);
+  $("#fund").hidden=!DEMO&&MODE==="live";
+  const h=new Date().getHours(),n=(S.user?.name||"").split(" ")[0];
+  $("#hello").textContent=(h<12?"Good morning":h<17?"Good afternoon":"Good evening")+(n?", "+n:"");
+  stats();
+}
+
+function build(){
+  const v=F.view,a=parseInt(F.amount,10);
+  if((v==="airtime"||v==="data")&&!/^0\d{10}$/.test(F.phone))return{error:"Enter a valid 11-digit phone number starting with 0."};
+  if(v==="airtime"){
+    if(!a||a<50)return{error:"Enter an amount of ₦50 or more."};
+    if(a>50000)return{error:"The maximum per purchase is ₦50,000."};
+    return{kind:v,title:F.net+" airtime",detail:F.phone,amount:a,rows:[["Network",F.net],["Phone",F.phone]]};
+  }
+  if(v==="data"){const p=BASE[F.plan];return{kind:v,title:F.net+" "+p[0]+" data · "+p[1],detail:F.phone,amount:price(F.plan),rows:[["Network",F.net],["Phone",F.phone],["Plan",p[0]+" · "+p[1]]]}}
+  if(v==="power"){
+    if(!/^\d{11,13}$/.test(F.meter))return{error:"Meter number should be 11 to 13 digits."};
+    if(!a||a<1000)return{error:"The minimum electricity purchase is ₦1,000."};
+    return{kind:v,title:F.disco.split(" (")[0]+" electricity",detail:"Meter "+F.meter,amount:a,rows:[["Company",F.disco],["Meter type",F.mtype],["Meter number",F.meter]]};
+  }
+  const p=CABLE[F.cable][F.pkg];
+  if(!/^\d{10,11}$/.test(F.card))return{error:"Smartcard number should be 10 or 11 digits."};
+  return{kind:"tv",title:F.cable+" "+p[0],detail:"Card "+F.card,amount:p[1],rows:[["Provider",F.cable],["Package",p[0]],["Smartcard",F.card]]};
+}
+
+const dlg=$("#dlg");
+const show=h=>{dlg.innerHTML=`<div class="sheet">${h}</div>`;if(!dlg.open)dlg.showModal()};
+const rows=r=>r.map(x=>`<div class="row"><span>${esc(x[0])}</span><span>${esc(x[1])}</span></div>`).join("");
+const closeBtn='<button class="btn ghost" data-close>Close</button>';
+
+function review(o){
+  o.reqId=rid();
+  if(o.amount>S.bal)return low(o);
+  show(`<h3>Confirm purchase</h3>${rows(o.rows)}<div class="row"><span>Amount</span><span>${fmt(o.amount)}</span></div><div class="row"><span>Wallet after</span><span>${fmt(S.bal-o.amount)}</span></div><div style="margin-block-start:18px"><button class="btn pri" id="next">Continue</button><button class="btn ghost" data-close>Cancel</button></div>`);
+  $("#next").onclick=()=>pin(o);
+}
+function low(o){
+  show(`<h3>Wallet balance is too low</h3><p class="mute" style="margin-block-end:18px">This costs ${fmt(o.amount)} and your wallet has ${fmt(S.bal)}.</p>${$("#fund").hidden?"":'<button class="btn pri" id="gofund">Add test money</button>'}<button class="btn ghost" data-close>Cancel</button>`);
+}
+function pin(o,msg=""){
+  show(`<div class="center"><span class="ic" style="margin:0 auto 12px">${ico("shield")}</span><h3>Enter your PIN</h3><p class="mute">Confirm ${fmt(o.amount)} for ${esc(o.title)}.</p></div><div class="pin">${[0,1,2,3].map(()=>'<input type="password" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="PIN digit">').join("")}</div><p class="err center" id="perr" role="alert"></p>`);
+  $("#perr").textContent=msg;
+  const ins=$$(".pin input");ins[0].focus();
+  ins.forEach((el,i)=>{
+    el.oninput=()=>{el.value=el.value.replace(/\D/g,"");if(el.value&&ins[i+1])ins[i+1].focus();if(ins.every(x=>x.value))pay(o,ins.map(x=>x.value).join(""))};
+    el.onkeydown=e=>{if(e.key==="Backspace"&&!el.value&&ins[i-1])ins[i-1].focus()};
+  });
+}
+async function pay(o,pinStr){
+  show('<div class="center"><div class="spin" role="status" aria-label="Processing"></div><h3>Processing payment</h3><p class="mute">Please keep this window open.</p></div>');
+  try{
+    const r=await api("POST","/api/purchase",{kind:o.kind,title:o.title,detail:o.detail,amount:o.amount,pin:pinStr,requestId:o.reqId});
+    S.bal=r.balance;if(!r.replay)S.tx.unshift(r.tx);
+    render();receipt(r.tx,true);
+  }catch(e){
+    if(e.status===403||e.status===423)return pin(o,e.message);
+    if(e.status===402)return low(o);
+    if(e.status===401)return logout();
+    show(`<h3>Couldn’t finish</h3><p class="mute" style="margin-block-end:18px">${esc(e.message)}${e.status===0?" If you were charged, it will show in History.":""}</p><button class="btn pri" id="retry">Try again</button>${closeBtn}`);
+    $("#retry").onclick=()=>pin(o);
+  }
+}
+function receipt(t,fresh){
+  const bad=t.status==="refunded";
+  show(`${fresh&&!bad?'<svg class="tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg>':""}<div class="center"><h3>${bad?"Purchase failed":fresh?"Payment successful":"Receipt"}</h3><div class="num" style="font-size:34px;font-weight:800;margin-block-end:8px">${fmt(t.amount)}</div>${bad?'<p class="mute">The purchase didn’t go through, so the money was returned to your wallet.</p>':""}</div>${rows([["Service",t.title],["Details",t.detail]])}<div class="row"><span>Reference</span><span>${esc(t.ref)}</span></div><div class="row"><span>Date</span><span>${when(t.created_at)}</span></div><div class="row"><span>Status</span><span style="color:${bad?"var(--err)":"var(--pri)"}">${bad?"Refunded":"Successful"}</span></div>${t.token?`<div class="token" aria-label="Electricity token">${esc(t.token)}</div><p class="mute center" style="font-size:13px">Enter this token on your meter.</p>`:""}<div style="margin-block-start:16px"><button class="btn pri" data-close>Done</button><button class="btn ghost" id="cp">${ico("copy")}Copy receipt</button></div>`);
+  $("#cp").onclick=async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText(`Vendly receipt\n${t.title}\n${fmt(t.amount)}\nRef: ${t.ref}\n${when(t.created_at)}${t.token?"\nToken: "+t.token:""}`);b.lastChild.textContent="Copied"}catch{b.lastChild.textContent="Copy not available"}};
+}
+function fund(){
+  show(`<h3>Add test money</h3><div class="chips" style="margin-block-end:16px">${[1000,2000,5000,10000].map(a=>`<button class="pill" data-f="${a}">${fmt(a)}</button>`).join("")}</div><div class="fld"><label for="famt">Amount</label><input id="famt" inputmode="numeric" maxlength="6" placeholder="Amount in naira"></div><p class="mute" style="font-size:13px;margin-block-end:12px">Test money only. Real funding comes later.</p><p class="err" id="ferr" role="alert"></p><button class="btn pri" id="add">Add to wallet</button><button class="btn ghost" data-close>Cancel</button>`);
+  $("#add").onclick=async()=>{
+    const a=parseInt($("#famt").value,10);
+    if(!a||a<100){$("#ferr").textContent="Enter at least ₦100.";return}
+    try{S.bal=(await api("POST","/api/wallet/fund-test",{amount:a})).balance;render();dlg.close()}catch(e){$("#ferr").textContent=e.message}
+  };
+}
+
+function support(){
+  show(`<h3>Support &amp; contact</h3><p class="mute" style="margin-block-end:16px">Problem with a purchase? Keep your receipt reference ready. It starts with VND.</p>${SUPPORT_WA?`<a class="btn pri" href="https://wa.me/${esc(SUPPORT_WA)}" target="_blank" rel="noopener">Chat on WhatsApp</a>`:'<p class="mute">The support line will be added before launch.</p>'}<button class="btn ghost" data-close>Close</button>`);
+}
+function notif(){
+  ls.set("vendly_seen","1");$("#belldot").hidden=true;
+  show(`<h3>Notifications</h3>${NOTICES.map(n=>`<div class="row" style="display:block"><b>${esc(n[0])}</b><p class="mute" style="margin:2px 0 0">${esc(n[1])}</p></div>`).join("")}<div style="margin-block-start:16px"><button class="btn pri" data-close>Close</button></div>`);
+}
+/* Short plain-language summaries. Replace with your final Terms and Privacy Policy before going live. */
+function legal(k){
+  const T={terms:["Terms of use (summary)",["Use Vendly only for your own lawful purchases.","Keep your PIN and password private. You are responsible for activity that uses them.","A purchase sent to a wrong number or meter can’t be reversed once delivered, so check the details before you confirm.","If a purchase fails, the money goes back to your wallet.","We may pause accounts that look suspicious, to protect other users."]],privacy:["Privacy policy (summary)",["We collect your name, phone number and purchase history.","We use them to run your account, deliver your purchases and prevent fraud.","We don’t sell your information.","Your password and PIN are stored scrambled, so nobody at Vendly can read them."]]};
+  const[t,l]=T[k];
+  show(`<h3>${t}</h3><ul class="plain">${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="mute" style="font-size:13px;margin-block-end:14px">This is a short summary. The full document will be published before Vendly opens to the public.</p><button class="btn pri" data-close>Close</button>`);
+}
+function forgotDlg(){
+  show(`<h3>Forgot your password?</h3><p class="mute" style="margin-block-end:16px">Resetting with a verification code isn’t available yet. For now, contact support with your phone number and they will help you.</p>${SUPPORT_WA?`<a class="btn pri" href="https://wa.me/${esc(SUPPORT_WA)}" target="_blank" rel="noopener">Chat on WhatsApp</a>`:'<p class="mute">The support line will be added before launch.</p>'}<button class="btn ghost" data-close>Close</button>`);
+}
+/* Unified codes first, older network codes second. Networks change codes sometimes. */
+const BAL={MTN:{a:["*310#","*556#"],d:["*323#","*131*4#"]},Airtel:{a:["*310#","*123#"],d:["*323#","*140#"]},Glo:{a:["*310#","*124#"],d:["*323#","*127*0#"]},"9mobile":{a:["*310#","*232#"],d:["*323#","*228#"]}};
+const tel=c=>"tel:"+c.replace(/#/g,"%23");
+function balDialog(){
+  const n=F.net,c=BAL[n],link=(x,alt)=>`<a class="codea${alt?" alt":""}" href="${tel(x)}">${esc(x)}</a>`;
+  show(`<h3>Check your balance</h3><p class="mute" style="margin-block-end:14px">Pick your network, then tap a code. Your phone’s dialer opens. Press call to see your balance.</p>${fs("Network",Object.keys(NETS).map(x=>opt("bnet",x,badge(x)+x,x===n)).join(""),"nets")}<div class="row"><span>Airtime</span><span class="codes">${link(c.a[0])}${link(c.a[1],1)}</span></div><div class="row"><span>Data</span><span class="codes">${link(c.d[0])}${link(c.d[1],1)}</span></div><p class="mute" style="font-size:13px;margin:12px 0 14px">If the first code doesn’t work, try the second, or open your network’s app.</p><button class="btn ghost" data-close>Close</button>`);
+}
+function lastUpText(){
+  if(F.phone.length!==11)return "";
+  const t=S.tx.find(x=>x.detail===F.phone&&x.status==="success"&&(x.kind==="airtime"||x.kind==="data"));
+  return t?`Last topped up: ${t.title} (${fmt(t.amount)}) on ${new Date(t.created_at).toLocaleDateString("en-NG",{day:"numeric",month:"short"})}.`:"";
+}
+
+const lastUser=()=>{try{return JSON.parse(ls.get("vendly_last")||"null")}catch{return null}};
+const hero=(s=72)=>`<div class="hero"><svg class="lg" width="${s}" height="${s}" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" width="${Math.round(s*1.9)}" height="${Math.round(s*.75)}" aria-label="Vendly"><use href="#wm"/></svg></div>`;
+const trustline=()=>`<p class="trustline">${ico("shield")}<span>Your password and PIN are stored scrambled. We never ask for them.</span></p>`;
+const STEPS=["Details","Password","PIN","Review"];
+const pinGroup=(g,label,val)=>`<div class="fld"><label>${label}</label><div class="pin pin-sm" role="group" aria-label="${label}">${[0,1,2,3].map(i=>`<input type="password" inputmode="numeric" maxlength="1" autocomplete="off" data-pg="${g}" data-i="${i}" value="${esc(val[i]||"")}" aria-label="${label}, digit ${i+1}">`).join("")}</div></div>`;
+function strength(){
+  const c=pwChecks(AF.password,AF.name,AF.phone),n=c.filter(x=>x[1]).length;
+  if(!AF.password)return{lvl:0,label:""};
+  return n===5?(AF.password.length>=12?{lvl:4,label:"Strong"}:{lvl:3,label:"Good"}):n>=3?{lvl:2,label:"Fair"}:{lvl:1,label:"Weak"};
+}
+function pwUI(){
+  const c=pwChecks(AF.password,AF.name,AF.phone),s=strength(),m=$("#meter");
+  if(m){m.dataset.s=s.lvl;$("#mlabel").textContent=s.label}
+  $$(".chk li").forEach((li,i)=>li.classList.toggle("ok",c[i][1]));
+}
+function regHTML(){
+  const bar=`<div class="steps" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="${AS}" aria-label="Step ${AS} of 4">${STEPS.map((n,i)=>`<div class="stp${i+1<AS?" done":i+1===AS?" now":""}"><i></i><span>${n}</span></div>`).join("")}</div>`;
+  let b="";
+  if(AS===1)b=`<h2>Create your account</h2><p class="mute lead">Use your real details. They help protect your wallet.</p>${fld("a-name","Full name","Your name",AF.name,60,"text","text")}${fld("a-phone","Phone number","0803 000 0000",AF.phone,11)}`;
+  if(AS===2)b=`<h2>Choose a strong password</h2><p class="mute lead">It keeps your account safe even if someone knows your phone number.</p>${fld("a-password","Password","Create a password",AF.password,60,"password","text")}<div class="meter" id="meter" data-s="0"><i></i><i></i><i></i><i></i></div><p class="mlabel" id="mlabel"></p><ul class="chk">${pwChecks("","","").map(x=>`<li>${x[0]}</li>`).join("")}</ul>${fld("a-password2","Confirm password","Type it again",AF.password2,60,"password","text")}`;
+  if(AS===3)b=`<h2>Create your PIN</h2><p class="mute lead">Your 4-digit PIN confirms every purchase. Avoid birthdays and easy numbers like 1234.</p>${pinGroup("pin","Create PIN",AF.pin)}${pinGroup("pin2","Confirm PIN",AF.pin2)}`;
+  if(AS===4)b=`<h2>Review and confirm</h2>${rows([["Name",AF.name.trim()],["Phone",AF.phone],["Password",strength().label||"Set"],["PIN","Set ✓"]])}<label class="agree"><input type="checkbox" id="a-agree"${AF.agree?" checked":""}><span>I agree to the <button type="button" class="linkbtn" data-act="terms">Terms of use</button> and <button type="button" class="linkbtn" data-act="privacy">Privacy policy</button>.</span></label><div class="protect"><b>How we protect you</b><ul><li>Your password and PIN are stored scrambled, so nobody can read them.</li><li>Your PIN is needed for every purchase.</li><li>Purchases lock after 5 wrong PIN tries.</li><li>We will never ask for your PIN or password.</li></ul></div>`;
+  const next=AS===4?'<button class="btn pri" id="asub" data-act="next">Create account</button>':'<button class="btn pri" data-act="next">Continue</button>';
+  return `<button class="linkbtn toplink" data-am="${lastUser()?"back":"login"}">‹ Back to log in</button>${hero(52)}${bar}${b}<p class="err" id="aerr" role="alert"></p>${next}${AS>1?'<button class="btn ghost" data-act="back">Back</button>':""}${trustline()}`;
+}
+function authHTML(){
+  const last=lastUser(),back=AM==="back"&&last,reg=AM==="register";
+  let h;
+  if(reg)h=regHTML();
+  else if(back){AF.phone=last.phone;h=`${hero(76)}<h2 class="ctr">Welcome back, ${esc(String(last.name).split(" ")[0])}</h2><p class="mute ctr" style="margin:-4px 0 6px">Enter your password to continue.</p><div class="ctr" style="margin-block-end:12px"><button class="linkbtn" data-am="login">Log in with another account</button></div>${fld("a-password","Password","Your password",AF.password,60,"password","text")}<p class="err" id="aerr" role="alert"></p><button class="btn pri" id="asub">Log in</button><button class="btn ghost" data-act="forgot">Forgot password?</button><button class="btn ghost" data-am="register">New here? Create account</button>${trustline()}`}
+  else h=`${hero(76)}<h2 class="ctr">Welcome to Vendly</h2><p class="mute ctr" style="margin:-4px 0 14px">Log in to your account.</p>${fld("a-phone","Phone number","0803 000 0000",AF.phone,11)}${fld("a-password","Password","Your password",AF.password,60,"password","text")}<p class="err" id="aerr" role="alert"></p><button class="btn pri" id="asub">Log in</button><button class="btn ghost" data-act="forgot">Forgot password?</button><button class="btn ghost" data-am="register">New here? Create account</button>${trustline()}`;
+  $("#auth").innerHTML=`<div class="panel authcard">${h}</div>`;
+  if(reg&&AS===2)pwUI();
+}
+function showAuth(){AM=lastUser()?"back":"login";AS=1;$("#shell").hidden=true;$("#bnav").hidden=true;$("#auth").hidden=false;authHTML()}
+function wizNext(){
+  const err=m=>{$("#aerr").textContent=m};
+  if(AS===1){
+    if(AF.name.trim().length<2)return err("Enter your full name.");
+    if(!/^0\d{10}$/.test(AF.phone))return err("Enter a valid 11-digit phone number.");
+    AS=2;return authHTML();
+  }
+  if(AS===2){
+    const c=pwChecks(AF.password,AF.name,AF.phone).find(x=>!x[1]);
+    if(c)return err("Password rule not met: "+c[0].toLowerCase()+".");
+    if(AF.password!==AF.password2)return err("The two passwords don’t match.");
+    AS=3;return authHTML();
+  }
+  if(AS===3){
+    const p=pinProblem(AF.pin);if(p)return err(p);
+    if(AF.pin!==AF.pin2)return err("The two PINs don’t match.");
+    AS=4;return authHTML();
+  }
+  if(!AF.agree)return err("Please accept the Terms and Privacy policy to continue.");
+  submitAuth();
+}
+const wizBack=()=>{AS=Math.max(1,AS-1);authHTML()};
+function openDrawer(){
+  const u=S.user||{name:""},item=([k,n,i])=>`<button class="di" data-view="${k}" aria-current="${F.view===k?"page":"false"}">${ico(i)}<span>${n}</span></button>`;
+  $("#drawer .dpanel").innerHTML=`<div class="dtop"><div><b>${esc(u.name)}</b><small>Balance: ${fmt(S.bal)}</small></div><button class="icon-btn" data-act="drawer-close" aria-label="Close menu"><svg class="i" style="rotate:45deg"><use href="#plus"/></svg></button></div>${NAV.map(item).join("")}<hr>${canInstall()?`<button class="di" data-act="install">${ico("plus")}<span>Install app</span></button>`:""}<button class="di" data-act="notif">${ico("bell")}<span>Notifications</span></button><button class="di" data-act="support">${ico("headset")}<span>Support</span></button><button class="di" data-act="logout" style="color:var(--err)">${ico("out")}<span>Log out</span></button>`;
+  $("#drawer").classList.add("open");
+}
+const closeDrawer=()=>$("#drawer").classList.remove("open");
+let DEFER=null,READY=false;
+const standalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+const dismissed=()=>Date.now()-Number(ls.get("vendly_install_no")||0)<7*864e5;
+const canInstall=()=>!DEMO&&!standalone()&&(!!DEFER||isIOS());
+function offerInstall(force){
+  if(!canInstall()||(!force&&dismissed()))return;
+  const el=$("#install"),ios=!DEFER,nav=$("#bnav"),lift=nav&&!nav.hidden&&getComputedStyle(nav).display!=="none";
+  el.style.setProperty("--ib",lift?"92px":"14px");
+  el.innerHTML=`<div class="ins-top"><svg class="lg" width="52" height="52" aria-hidden="true"><use href="#logo"/></svg><div><b>Install Vendly</b><p>${ios?"Add Vendly to your home screen. It opens like an app, with one tap.":"Get the Vendly app icon on your home screen. It opens full-screen like a real app."}</p></div></div>${ios?`<div class="ins-steps">Tap ${ico("share")} <b>Share</b>, then <b>Add to Home Screen</b>.</div>`:""}<div class="ins-btns">${ios?"":'<button class="btn pri" id="ins-go">Install</button>'}<button class="btn ghost" id="ins-no">${ios?"Got it":"Not now"}</button></div>`;
+  el.hidden=false;
+  $("#ins-no").onclick=()=>{ls.set("vendly_install_no",String(Date.now()));el.hidden=true};
+  const go=$("#ins-go");
+  if(go)go.onclick=async()=>{
+    el.hidden=true;
+    try{DEFER.prompt();const r=await DEFER.userChoice;if(r.outcome!=="accepted")ls.set("vendly_install_no",String(Date.now()))}catch{}
+    DEFER=null;
+  };
+}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();DEFER=e;if(READY)setTimeout(offerInstall,600)});
+window.addEventListener("appinstalled",()=>{DEFER=null;$("#install").hidden=true});
+function start(){$("#auth").hidden=true;$("#shell").hidden=false;$("#bnav").hidden=false;render()}
+async function loadTx(){S.tx=(await api("GET","/api/transactions")).transactions}
+async function submitAuth(){
+  const err=m=>{const e=$("#aerr");if(e)e.textContent=m},reg=AM==="register";
+  if(!reg){
+    if(!/^0\d{10}$/.test(AF.phone))return err("Enter a valid 11-digit phone number.");
+    if(!AF.password)return err("Enter your password.");
+  }
+  const b=$("#asub");b.disabled=true;b.textContent="Please wait…";
+  try{
+    const r=await api("POST",reg?"/api/register":"/api/login",reg?{name:AF.name.trim(),phone:AF.phone,password:AF.password,pin:AF.pin,agreed:true}:{phone:AF.phone,password:AF.password});
+    TOK=r.token;if(!DEMO)ls.set("vendly_token",TOK);
+    S.user=r.user;S.bal=r.balance;ls.set("vendly_last",JSON.stringify({name:r.user.name,phone:r.user.phone}));F.view="home";
+    AF.password=AF.password2=AF.pin=AF.pin2="";AF.agree=false;AS=1;
+    await loadTx();start();
+  }catch(e){err(e.message);b.disabled=false;b.textContent=reg?"Create account":"Log in"}
+}
+function logout(){
+  TOK=null;ls.del("vendly_token");if(DEMO)mock("POST","/api/logout").catch(()=>{});
+  S.user=null;S.bal=0;S.tx=[];AF.password=AF.password2=AF.pin=AF.pin2="";AF.agree=false;closeDrawer();dlg.open&&dlg.close();showAuth();
+}
+
+$("#nav").innerHTML=NAV.map(([k,n,i])=>`<button data-view="${k}">${ico(i)}<span>${n}</span></button>`).join("");
+$("#bnav").innerHTML=`<button data-view="home">${ico("home")}<span>Home</span></button><button data-view="history">${ico("clock")}<span>History</span></button><button class="fab" data-act="fund" aria-label="Fund wallet"><span class="fabc">${ico("plus")}</span><span>Fund</span></button><button data-view="prices">${ico("tag")}<span>Prices</span></button><button data-view="profile">${ico("user")}<span>Profile</span></button>`;
+function go(v){closeDrawer();const f=()=>{F.view=v;render()};document.startViewTransition?document.startViewTransition(f):f()}
+
+document.addEventListener("click",e=>{
+  const g=s=>e.target.closest(s);let el;
+  if(el=g("[data-view]"))return go(el.dataset.view);
+  if(el=g("[data-act]")){const A={fund,install:()=>offerInstall(true),support,notif,logout,bal:balDialog,forgot:forgotDlg,terms:()=>legal("terms"),privacy:()=>legal("privacy"),drawer:openDrawer,"drawer-close":closeDrawer,next:wizNext,back:wizBack};closeDrawer();return(A[el.dataset.act]||(()=>0))()}
+  if(el=g("[data-eye]")){const i=$("#"+el.dataset.eye);i.type=i.type==="password"?"text":"password";return}
+  if(g("#chpw"))return chPw();
+  if(g("#chpin"))return chPin();
+  if(el=g("[data-am]")){AM=el.dataset.am;AS=1;return authHTML()}
+  if(el=g("[data-tx]"))return receipt(S.tx.find(t=>t.ref===el.dataset.tx));
+  if(el=g("[data-f]")){$("#famt").value=el.dataset.f;return}
+  if(g("[data-close]"))return dlg.close();
+  if(g("#gofund")||g("#fund"))return fund();
+  if(g("#hidebal")){HIDE=!HIDE;return render()}
+  if(g("#logout"))return logout();
+  if(g("#asub"))return submitAuth();
+  if(g("#theme")){const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark";return}
+  if(g("#review")){const o=build();if(o.error)return $("#err").textContent=o.error;review(o)}
+  if(e.target===dlg)dlg.close();
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.type==="radio"){
+    if(t.name==="bnet"){F.net=t.value;render();return balDialog()}
+    if(t.name==="am"){AM=t.value;return authHTML()}
+    F[t.name]=["plan","pkg"].includes(t.name)?+t.value:t.value;
+    if(t.name==="cable")F.pkg=0;
+    render();
+  }
+  if(t.id==="disco")F.disco=t.value;
+  if(t.id==="a-agree")AF.agree=t.checked;
+});
+document.addEventListener("input",e=>{
+  const t=e.target,id=t.id,v=t.value.replace(/\D/g,"");
+  const ae=$("#aerr");if(ae&&t.closest&&t.closest("#auth"))ae.textContent="";
+  if(t.dataset.pg){
+    t.value=v.slice(-1);const g=$$(`[data-pg="${t.dataset.pg}"]`);AF[t.dataset.pg]=g.map(x=>x.value).join("");
+    if(t.value&&g[+t.dataset.i+1])g[+t.dataset.i+1].focus();return;
+  }
+  if(id==="phone"||id==="a-phone"){
+    const k=id==="phone"?F:AF;k.phone=v;t.value=v;
+    if(id==="phone"){const lu=$("#lastup");if(lu)lu.textContent=lastUpText()}
+    const n=id==="phone"&&detectNet(v);
+    if(n&&n!==F.net){F.net=n;$$("input[name=net]").forEach(r=>r.checked=r.value===n);$$(".plan em[data-i]").forEach(m=>m.textContent=fmt(price(+m.dataset.i)))}
+  }
+  else if(id==="amt"){F.amount=v;t.value=v;$$("input[name=amount]").forEach(r=>r.checked=r.value===v)}
+  else if(id==="meter"){F.meter=v;t.value=v}
+  else if(id==="card"){F.card=v;t.value=v}
+  else if(id==="famt")t.value=v;
+  else if(id==="q"){F.q=t.value;$("#txlist").innerHTML=txRows()}
+  else if(id==="a-pin"){AF.pin=v;t.value=v}
+  else if(id==="a-name")AF.name=t.value;
+  else if(id==="a-password"){AF.password=t.value;if(AM==="register")pwUI()}
+  else if(id==="a-password2")AF.password2=t.value;
+  else if(id==="cpin-cur"||id==="cpin-new")t.value=v;
+});
+document.addEventListener("focusin",e=>{const t=e.target;if(t.dataset&&t.dataset.pg)t.select()});
+document.addEventListener("keydown",e=>{
+  const t=e.target;
+  if(e.key==="Escape")closeDrawer();
+  if(e.key==="Backspace"&&t.dataset&&t.dataset.pg&&!t.value){const g=$$(`[data-pg="${t.dataset.pg}"]`);g[+t.dataset.i-1]?.focus()}
+  if(e.key==="Enter"&&t.closest&&t.closest("#auth")&&t.tagName==="INPUT"&&t.type!=="checkbox"){e.preventDefault();AM==="register"?wizNext():submitAuth()}
+});
+
+(async()=>{
+  const splash=$("#splash"),quick=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let skip;const minWait=new Promise(r=>{skip=r;setTimeout(r,quick?600:2300)});
+  splash.addEventListener("click",()=>skip());
+  await detect();
+  if(!DEMO&&"serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
+  const b=$("#banner");
+  b.hidden=!DEMO&&MODE==="live";
+  b.textContent=DEMO?"Demo mode: this preview isn’t connected to a server, so nothing here is real.":"Sandbox mode: test money only. No real airtime is sent.";
+  $("#date").textContent=new Date().toLocaleDateString("en-NG",{weekday:"long",day:"numeric",month:"long"});
+  let ok=false;
+  try{if(TOK||DEMO){const me=await api("GET","/api/me");S.user=me.user;S.bal=me.balance;await loadTx();start();ok=true}}catch{}
+  if(!ok)showAuth();
+  await minWait;
+  splash.classList.add("out");setTimeout(()=>{splash.hidden=true},600);
+  READY=true;setTimeout(offerInstall,1400);
+})();
+</script>
+</body>
+</html>
